@@ -6,41 +6,44 @@
 /*   By: mac <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 19:48:02 by mac               #+#    #+#             */
-/*   Updated: 2021/02/20 19:48:03 by mac              ###   ########.fr       */
+/*   Updated: 2021/02/20 21:03:43 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "get_next_line/get_next_line.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <math.h>
+#ifndef CUB3D_H
+# define CUB3D_H
 
-#define GREY_COLOR 0x00808080
-#define WHITE_COLOR 0x00FFFFFF
-#define BLUE_COLOR 0x000000FF
-#define RED_COLOR 0x00FF0000
-#define BLACK_COLOR 0x00000000
-#define SKY_COLOR 0x0087CEEB
-#define GREEN_COLOR 0x00008000
+# include "mlx.h"
+# include "get_next_line/get_next_line.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <math.h>
 
-#define W_KEY 13
-#define S_KEY 1
-#define A_KEY 0
-#define D_KEY 2
-#define ESC_KEY 53
+# define GREY_COLOR 0x00808080
+# define WHITE_COLOR 0x00FFFFFF
+# define BLUE_COLOR 0x000000FF
+# define RED_COLOR 0x00FF0000
+# define BLACK_COLOR 0x00000000
+# define SKY_COLOR 0x0087CEEB
+# define GREEN_COLOR 0x00008000
 
-#define PI 3.14159265359
+# define W_KEY 13
+# define S_KEY 1
+# define A_KEY 0
+# define D_KEY 2
+# define ESC_KEY 53
 
-#define MOVE_SPEED 0.05
-#define ROTATE_SPEED (PI / 72)
-#define IMAGE_WIDTH 64
-#define IMAGE_HEIGHT 64
+# define PI 3.14159265359
 
-#define UDIV 1
-#define VDIV 1
-#define VMOVE 0.0
+# define MOVE_SPEED 0.05
+# define ROTATE_SPEED 0.0436332313
+# define IMAGE_WIDTH 64
+# define IMAGE_HEIGHT 64
+
+# define UDIV 1
+# define VDIV 1
+# define VMOVE 0.0
 
 typedef struct	s_cal
 {
@@ -184,3 +187,5 @@ char			**ft_split(char const *str, char charset);
 char			*ft_itoa(int n);
 int				ft_atoi(const char *str);
 size_t			ft_strlcpy(char *dest, const char *src, size_t size);
+
+#endif

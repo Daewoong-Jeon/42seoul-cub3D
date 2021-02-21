@@ -6,7 +6,7 @@
 /*   By: mac <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 19:48:17 by mac               #+#    #+#             */
-/*   Updated: 2021/02/20 19:48:18 by mac              ###   ########.fr       */
+/*   Updated: 2021/02/21 13:29:34 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,20 @@ int		parse_color(char *line, t_struct *tmp)
 	return (0);
 }
 
+#include <stdio.h>
+
 void	load_texture(int index, char *line, t_struct *tmp)
 {
 	char	**ret;
-	int		max_x;
-	int		max_y;
 
-	max_x = 0;
-	max_y = 0;
 	ret = ft_split(line, ' ');
 	if (index == -1)
 	{
+		if (ret[1] == 0 || ret[2] == 0)
+		{
+			ft_putstr("parsing error\n");
+			exit(-1);
+		}
 		tmp->window_size_x = ft_atoi(ret[1]);
 		tmp->window_size_y = ft_atoi(ret[2]);
 		if (tmp->window_size_x > 1920 || tmp->window_size_y > 1080)
