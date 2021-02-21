@@ -6,7 +6,7 @@
 /*   By: mac <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 19:48:26 by mac               #+#    #+#             */
-/*   Updated: 2021/02/20 19:48:28 by mac              ###   ########.fr       */
+/*   Updated: 2021/02/21 13:37:23 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,8 @@ void	first_last_line(char *line, t_struct *tmp, char *map_tmp)
 		if (!(line[i] == ' ' || line[i] == '1') || white_space(line[i]))
 			tmp->error = 1;
 		if (tmp->last_line == 1 && line[i] == ' ')
-		{
 			if (map_tmp[i] == '0')
 				tmp->error = 1;
-		}
-		if (line[i] == '2')
-			tmp->num_sprite++;
 	}
 }
 
