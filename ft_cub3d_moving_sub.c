@@ -6,7 +6,7 @@
 /*   By: mac <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 19:47:54 by mac               #+#    #+#             */
-/*   Updated: 2021/02/22 16:35:53 by mac              ###   ########.fr       */
+/*   Updated: 2021/02/24 15:00:14 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	key_release_rl(int key, t_struct *tmp)
 	}
 	if (key == LEFT_KEY)
 	{
-
 		if (tmp->arrow_key == 'r')
 			ft_tool2_keysave_set(&(tmp->right_arrow), &(tmp->arrow_key), 1, 0);
 		else if (tmp->arrow_key == 'l')
