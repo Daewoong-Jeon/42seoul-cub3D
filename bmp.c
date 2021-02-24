@@ -6,7 +6,7 @@
 /*   By: mac <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 20:27:46 by mac               #+#    #+#             */
-/*   Updated: 2021/02/20 20:27:49 by mac              ###   ########.fr       */
+/*   Updated: 2021/02/24 16:03:21 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			save_bmp(t_struct *tmp)
 	int				file;
 
 	w = tmp;
-	filesize = 2 + 54 + (tmp->window_size_x * tmp->window_size_y) * 4;
+	filesize = 54 + (tmp->window_size_x * tmp->window_size_y) * 4;
 	if (!(file = open("screenshot.bmp", O_CREAT | O_RDWR | O_TRUNC, 0666)))
 		return (0);
 	if (!write_bmp_header(file, filesize, tmp))
