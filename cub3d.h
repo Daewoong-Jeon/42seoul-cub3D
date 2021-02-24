@@ -6,7 +6,7 @@
 /*   By: mac <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 19:48:02 by mac               #+#    #+#             */
-/*   Updated: 2021/02/20 21:03:43 by mac              ###   ########.fr       */
+/*   Updated: 2021/02/22 16:35:24 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define S_KEY 1
 # define A_KEY 0
 # define D_KEY 2
+# define LEFT_KEY 123
+# define RIGHT_KEY 124
 # define ESC_KEY 53
 
 # define PI 3.14159265359
@@ -134,8 +136,11 @@ typedef struct	s_struct
 	int			a_key;
 	int			s_key;
 	int			d_key;
+	int			left_arrow;
+	int			right_arrow;
 	char		ad_key;
 	char		ws_key;
+	char		arrow_key;
 	int			bmp_flag;
 	int			pos_tmp;
 	char		**map_tmp1;
@@ -144,6 +149,10 @@ typedef struct	s_struct
 	int			tem;
 }				t_struct;
 
+void			dont_move_sub(t_struct *tmp, double *tmp_x, double *tmp_y);
+void			wsad_move(t_struct *tmp);
+void			key_release_rl(int key, t_struct *tmp);
+void			key_press_rl(int key, t_struct *tmp);
 int				parse_color_sub(t_struct *tmp, char *line, int ret_result);
 void			ft_tool2_keysave_set(int *key_adws, char *key_save_adws,
 		int i, char j);

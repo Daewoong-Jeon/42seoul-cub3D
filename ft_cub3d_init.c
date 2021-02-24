@@ -6,7 +6,7 @@
 /*   By: mac <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 19:47:32 by mac               #+#    #+#             */
-/*   Updated: 2021/02/20 19:47:35 by mac              ###   ########.fr       */
+/*   Updated: 2021/02/22 15:08:54 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	struct_init(t_struct *tmp)
 	tmp->s_key = 0;
 	tmp->a_key = 0;
 	tmp->d_key = 0;
+	tmp->left_arrow = 0;
+	tmp->right_arrow = 0;
 	tmp->bmp_flag = 0;
 	tmp->pos_tmp = 0;
 }
@@ -93,13 +95,13 @@ int		check_arg(t_struct *tmp, int argc, char **argv)
 {
 	int			i;
 
-	i = ft_strlen(argv[1]) - 4;
-	if (ft_strncmp(&argv[1][i], ".cub", 4) != 0)
+	if (!(argc > 1 && argc < 4))
 	{
 		ft_putstr("input error\n");
 		return (-1);
 	}
-	if (!(argc > 1 && argc < 4))
+	i = ft_strlen(argv[1]) - 4;
+	if (ft_strncmp(&argv[1][i], ".cub", 4) != 0)
 	{
 		ft_putstr("input error\n");
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: mac <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 19:48:17 by mac               #+#    #+#             */
-/*   Updated: 2021/02/21 13:29:34 by mac              ###   ########.fr       */
+/*   Updated: 2021/02/24 12:54:36 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,19 @@ void	parse_map(int fd, t_struct *tmp, char *line)
 		exit(-1);
 	first_last_line(line, tmp, "\0");
 	tmp->map_size_x = ft_strlen(line);
-	if (tmp->error != 1)
-		tmp->map_tmp1[i++] = ft_strdup(line);
+	tmp->map_tmp1[i++] = ft_strdup(line);
 	tmp->map_tmp1[i] = "\0";
 	parse_map_sub(tmp, fd, &i, line);
 	if (tmp->map_size_y % 2 == 1)
 	{
 		first_last_line(line, tmp, tmp->map_tmp1[i - 1]);
-		if (tmp->error != 1)
-			tmp->map = ft_strdup_2(tmp->map_tmp1, i);
+		tmp->map = ft_strdup_2(tmp->map_tmp1, i);
 		free(tmp->map_tmp1);
 	}
 	else
 	{
 		first_last_line(line, tmp, tmp->map_tmp2[i - 1]);
-		if (tmp->error != 1)
-			tmp->map = ft_strdup_2(tmp->map_tmp2, i);
+		tmp->map = ft_strdup_2(tmp->map_tmp2, i);
 		free(tmp->map_tmp2);
 	}
 }
@@ -68,8 +65,6 @@ int		parse_color(char *line, t_struct *tmp)
 		return (-1);
 	return (0);
 }
-
-#include <stdio.h>
 
 void	load_texture(int index, char *line, t_struct *tmp)
 {
@@ -107,7 +102,7 @@ int		load_texture_sub(char *line, t_struct *tmp)
 		load_texture(0, line, tmp);
 	else if (ft_strncmp("SO ", line, 3) == 0 && tmp->parse_tmp == 2)
 		load_texture(1, line, tmp);
-	else if (ft_strncmp("S ", line, 2) == 0 && tmp->parse_tmp == 6)
+	else if (ft_strncmp("S ", line, 2) == 0 && tmp->parse_tmp == 5)
 		load_texture(4, line, tmp);
 	else if (ft_strncmp("WE ", line, 3) == 0 && tmp->parse_tmp == 3)
 		load_texture(2, line, tmp);
@@ -129,19 +124,21 @@ int		parse_cub(int fd, t_struct *tmp)
 	{
 		if (line[0] == 'R' || line[0] == 'N' || line[0] == 'S' || line[0] == 'W'
 				|| line[0] == 'E')
+		{
 			if (load_texture_sub(line, tmp) == -1)
 				return (-1);
-		if (line[0] == 'F' || line[0] == 'C')
+		}
+		else if (line[0] == 'F' || line[0] == 'C')
+		{
 			if (parse_color(line, tmp) == -1 || line[1] != ' ')
 				return (-1);
-		if (tmp->parse_tmp == 10 && line[0] != '\0')
+		}
+		else if (tmp->parse_tmp == 8 && line[0] != '\0')
 			parse_map(fd, tmp, line);
-		if ((tmp->parse_tmp == 9 || tmp->parse_tmp == 5) && line[0] == '\0')
-			tmp->parse_tmp++;
 		free(line);
 	}
 	free(line);
-	if (tmp->error == 1 || tmp->pos_tmp == 0 || tmp->parse_tmp != 10)
+	if (tmp->error == 1 || tmp->pos_tmp == 0 || tmp->parse_tmp != 8)
 		return (-1);
 	return (0);
 }

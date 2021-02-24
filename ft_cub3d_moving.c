@@ -6,7 +6,7 @@
 /*   By: mac <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 19:47:44 by mac               #+#    #+#             */
-/*   Updated: 2021/02/20 19:47:45 by mac              ###   ########.fr       */
+/*   Updated: 2021/02/22 16:32:27 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	key_press_ad(int key, t_struct *tmp)
 		}
 		tmp->d_key = 1;
 	}
+	key_press_rl(key, tmp);
 }
 
 int		key_press(int key, t_struct *tmp)
@@ -78,6 +79,7 @@ void	key_release_ad(int key, t_struct *tmp)
 			ft_tool2_keysave_set(&(tmp->d_key), &(tmp->ad_key), 0, 0);
 		tmp->d_key = 0;
 	}
+	key_release_rl(key, tmp);
 }
 
 int		key_release(int key, t_struct *tmp)
@@ -108,20 +110,11 @@ int		user_move(t_struct *tmp)
 {
 	if (dont_move(tmp) == 0)
 	{
-		if (tmp->a_key)
+		if (tmp->left_arrow)
 			rotate_vector(tmp, -ROTATE_SPEED);
-		if (tmp->d_key)
+		if (tmp->right_arrow)
 			rotate_vector(tmp, ROTATE_SPEED);
-		if (tmp->s_key)
-		{
-			tmp->user_x -= tmp->dir_x * MOVE_SPEED;
-			tmp->user_y -= tmp->dir_y * MOVE_SPEED;
-		}
-		if (tmp->w_key)
-		{
-			tmp->user_x += tmp->dir_x * MOVE_SPEED;
-			tmp->user_y += tmp->dir_y * MOVE_SPEED;
-		}
+		wsad_move(tmp);
 	}
 	return (0);
 }

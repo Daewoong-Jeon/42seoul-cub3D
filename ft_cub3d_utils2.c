@@ -6,7 +6,7 @@
 /*   By: mac <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 19:48:46 by mac               #+#    #+#             */
-/*   Updated: 2021/02/20 19:48:47 by mac              ###   ########.fr       */
+/*   Updated: 2021/02/22 13:33:56 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ void	swap_line(t_struct *tmp, int *i, char *line)
 		tmp->map_tmp2 = ft_strdup_2(tmp->map_tmp1, *i + 1);
 		free(tmp->map_tmp1);
 		middle_line(line, tmp, tmp->map_tmp2[*i - 1]);
-		if (tmp->error != 1)
-			tmp->map_tmp2[*i] = ft_strdup(line);
+		tmp->map_tmp2[*i] = ft_strdup(line);
 		*i += 1;
 		tmp->map_tmp2[*i] = "\0";
 	}
@@ -70,8 +69,7 @@ void	swap_line(t_struct *tmp, int *i, char *line)
 		tmp->map_tmp1 = ft_strdup_2(tmp->map_tmp2, *i + 1);
 		free(tmp->map_tmp2);
 		middle_line(line, tmp, tmp->map_tmp1[*i - 1]);
-		if (tmp->error != 1)
-			tmp->map_tmp1[*i] = ft_strdup(line);
+		tmp->map_tmp1[*i] = ft_strdup(line);
 		*i += 1;
 		tmp->map_tmp1[*i] = "\0";
 	}

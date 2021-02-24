@@ -6,7 +6,7 @@
 #    By: djeon <student.42seoul.kr>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/03 14:22:20 by mac               #+#    #+#              #
-#    Updated: 2021/02/20 14:25:47 by djeon            ###   ########.fr        #
+#    Updated: 2021/02/22 16:36:15 by mac              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = main.c \
 	ft_cub3d_draw_wall.c \
 	ft_cub3d_moving.c \
 	ft_cub3d_moving_sub.c \
+	ft_cub3d_moving_sub2.c \
 	ft_cub3d_parse.c \
 	ft_cub3d_parse_sub.c \
 	ft_cub3d_parse_utils.c \
